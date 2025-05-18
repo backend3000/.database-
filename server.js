@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Server is running.');
+});
+
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   const usersPath = path.join(__dirname, 'users.json');
