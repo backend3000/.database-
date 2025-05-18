@@ -7,9 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // <-- This line is what you need for JSON data from frontend
 app.use(express.static('public'));
 
-// Root route
+// Optional: add this route so visiting the root URL doesn't show an error
 app.get('/', (req, res) => {
   res.send('Server is running.');
 });
